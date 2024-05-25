@@ -65,20 +65,23 @@ function createOrder() {
             console.error("Error:", error);
         });
 }
-
 function verifyPayment(orderId, paymentId, signature) {
      $.post("/verify", { orderId: orderId, paymentId: paymentId, signature: signature })
          .done(function(isValid) {
              if (isValid) {
-                 console.log("Payment successful");
+                 alert("Payment successful");
+                 window.location.href = 'payment-success';
              } else {
-                 console.log("Payment failed");
+                 alert("Payment failed");
+                 window.location.href = 'payment-failure';
              }
          })
          .fail(function(error) {
              console.error("Error:", error);
          });
 }
+
+
 </script>
 </body>
 </html>
